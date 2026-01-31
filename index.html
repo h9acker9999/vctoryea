@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Victoria International School & College</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Hind Siliguri', 'Poppins', sans-serif;
+            cursor: none;
+            overflow-x: hidden;
+        }
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            background: rgba(30, 58, 138, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .cursor-glow {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(239, 68, 68, 0.05) 50%, transparent 70%);
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+        .notice-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @media (max-width: 768px) {
+            .custom-cursor, .cursor-glow { display: none; }
+            body { cursor: auto; }
+        }
+        .mobile-app-shadow {
+            box-shadow: 0 -4px 20px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <div id="cursor" class="custom-cursor"></div>
+    <div id="cursor-glow" class="cursor-glow"></div>
+    <div id="root"></div>
+    <script>
+        const cursor = document.getElementById('cursor');
+        const glow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>
